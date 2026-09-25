@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student Attendance</title>
 </head>
 <body>
-    <h1>hugfyfg hii</h1>
-    <p>gftytyfytf</p>
+    <header>
+    <h1>Student Attendance</h1> 
+    <p>Welcome to the Student Attendance page. Here you can view and manage student attendance records.</p> 
+</header>
+<main>
+    <div class="summary-cards">
+        <div class="card">
+            <h3>Total Students</h3>
+            <p id="sum-total">0</p>
+        </div>
+    <div class="card" style="border-left-color: var(--present);">
+        <h3>present today</h3>
+        <p id="sum-present">0</p>
+    </div>
+    <div class="card" style="border-left-color: var(--absent);">
+        <h3>absent today</h3>
+        <p id="sum-absent">0</p>
+    </div>
+    </div>
+    <section>
+        <h2 id="form-title">Attendance Form</h2>
+        <form id="student-form" novalidate>
+            <input type="hidden" id="edit-index" value="">
+            <div class="form-group">
+                <label for="student-name">Student Name:</label>
+                <input type="text" id="student-name" name="student-name" placeholder="Enter your name:"required>
+                <div class="error-msg" id="name-error">please enter a valid student name</div>
+
+            </div>
+            <button type="submit" id="submit-btn">Add Submit</button>
+        </form>
+    </section>
+    <section>
+        <h2>
+        Attendance records</h2>
 </body>
 </html>
