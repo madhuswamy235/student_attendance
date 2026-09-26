@@ -3,43 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Attendance</title>
+    <title>Student Attendance Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-    <h1>Student Attendance</h1> 
-    <p>Welcome to the Student Attendance page. Here you can view and manage student attendance records.</p> 
-</header>
-<main>
-    <div class="summary-cards">
-        <div class="card">
-            <h3>Total Students</h3>
-            <p id="sum-total">0</p>
-        </div>
-    <div class="card" style="border-left-color: var(--present);">
-        <h3>present today</h3>
-        <p id="sum-present">0</p>
-    </div>
-    <div class="card" style="border-left-color: var(--absent);">
-        <h3>absent today</h3>
-        <p id="sum-absent">0</p>
-    </div>
-    </div>
-    <section>
-        <h2 id="form-title">Attendance Form</h2>
-        <form id="student-form" novalidate>
-            <input type="hidden" id="edit-index" value="">
-            <div class="form-group">
-                <label for="student-name">Student Name:</label>
-                <input type="text" id="student-name" name="student-name" placeholder="Enter your name:"required>
-                <div class="error-msg" id="name-error">please enter a valid student name</div>
+        <h1>Student Attendance Tracker</h1>
+        <p>Manage student attendance easily</p>
+    </header>
+
+    <main class="container">
+
+        <section class="form-section">
+            <h2>Add Student</h2>
+
+            <form id="studentForm">
+
+                <input type="hidden" id="editId">
+
+                <label for="studentName">Student Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter student name"
+                    required
+                >
+
+                <label for="rollNumber">Roll Number</label>
+                <input
+                    type="text"
+                    id="rollNumber"
+                    placeholder="Enter roll number"
+                    required
+                >
+
+                <label for="attendanceDate">Date</label>
+                <input
+                    type="date"
+                    id="attendanceDate"
+                    required
+                >
+
+                <label for="attendanceStatus">Attendance Status</label>
+                <select id="attendanceStatus" required>
+                    <option value="">Select Status</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+
+                <button type="submit" id="submitButton">
+                    Add Student
+                </button>
+
+                <button type="button" id="cancelButton" class="cancel-btn">
+                    Cancel
+                </button>
+
+            </form>
+
+            <p id="message"></p>
+        </section>
+
+        <section class="summary-section">
+            <h2>Attendance Summary</h2>
+
+            <div class="summary-cards">
+
+                <div class="summary-card">
+                    <h3>Total Records</h3>
+                    <p id="totalRecords">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Present</h3>
+                    <p id="totalPresent">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Absent</h3>
+                    <p id="totalAbsent">0</p>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Attendance %</h3>
+                    <p id="overallPercentage">0%</p>
+                </div>
 
             </div>
-            <button type="submit" id="submit-btn">Add Submit</button>
-        </form>
-    </section>
-    <section>
-        <h2>
-        Attendance records</h2>
+        </section>
+
+        <section class="records-section">
+
+            <h2>Attendance Records</h2>
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by name or roll number"
+                >
+
+                <select id="filterStatus">
+                    <option value="All">All Status</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll Number</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Attendance %</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTableBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p id="emptyMessage">No attendance records found.</p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Student Attendance Tracker | Frontend Mini Project</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
